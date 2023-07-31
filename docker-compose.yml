@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  web:
+    image: lab2-web-server-image
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    networks:
+      - lab2_network
+
+
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: lab2ftw
+      MYSQL_DATABASE: labtwotestdb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password1!
+    networks:
+      - lab2_network
+
+networks:
+  lab2_network:
